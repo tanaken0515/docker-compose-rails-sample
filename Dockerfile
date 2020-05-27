@@ -1,5 +1,6 @@
-FROM ruby:2.5
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+FROM ruby:2.7
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client yarnpkg
+RUN ln -s /usr/bin/yarnpkg /usr/bin/yarn
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
