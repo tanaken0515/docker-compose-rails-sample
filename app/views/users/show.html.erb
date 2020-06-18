@@ -1,14 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div
+  class="js-users-show"
+  data-notice="<%= notice %>"
+  data-name="<%= @user.name %>"
+  data-email="<%= @user.email %>"
+  data-edit-user-path="<%= edit_user_path(@user) %>"
+  data-users-path="<%= users_path %>"
+></div>
