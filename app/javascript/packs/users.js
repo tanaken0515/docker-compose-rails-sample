@@ -2,9 +2,31 @@
 
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue'
+import UsersIndex from '../components/users/UsersIndex';
 import UsersShow from '../components/users/UsersShow.vue'
 
 Vue.use(TurbolinksAdapter)
+
+const mountUsersIndex = () => {
+  const el = document.querySelector('.js-users-index')
+
+  if (el == null) {
+    return
+  }
+
+  const { notice, users, newUserPath } = el.dataset
+
+  const props = {
+    notice: notice,
+    users: users ? JSON.parse(users) : [],
+    newUserPath: newUserPath
+  }
+
+  new Vue({
+    el: el,
+    render: h => h(UsersIndex, { props })
+  }).$mount()
+}
 
 const mountUsersShow = () => {
   const el = document.querySelector('.js-users-show')
@@ -30,5 +52,6 @@ const mountUsersShow = () => {
 }
 
 document.addEventListener('turbolinks:load', () => {
+  mountUsersIndex()
   mountUsersShow()
 })
